@@ -21,9 +21,12 @@ export function ListaPost() {
     }, [post])
 
     const agregarPostit = () => {
+
         const title = titleRef.current.value
         const desc = descRef.current.value
         let importante = []
+
+        if(desc === '') return;
 
         if(document.getElementById("importante").checked){
             importante = "postit-importante";
@@ -43,6 +46,9 @@ export function ListaPost() {
             }
             return [...prevPosts, newPost]
         })
+        titleRef.current.value = null;
+        descRef.current.value = null;
+        impRef.current.value = null;
     }
     const PostIt = () => {
         return (
